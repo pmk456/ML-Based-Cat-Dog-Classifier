@@ -1,0 +1,5 @@
+dataset:
+  train_dogs_dir: "data/train/dogs/"
+  train_cats_dir: "data/train/cats/"
+  test_dogs_dir: "data/test/dogs"
+  test_cats_dir: "data/test/cats"
