@@ -9,8 +9,7 @@ try:
         freeze_support()
         set_start_method("spawn")
     else:
-        freeze_support()
-        set_start_method("spawn")
+        set_start_method("fork")
 except RuntimeError:
     pass
 
@@ -24,7 +23,7 @@ class LoadDataset:
         self.length = len(self.images)
         if self.length == 0:
             raise OSError("Directory Empty!")
-        self.workers = os.cpu_count() * 2
+        self.workers = os.cpu_count()
         print("Workers Assigned: %d" % self.workers)
         
     def _transform_image(self, image_path):
