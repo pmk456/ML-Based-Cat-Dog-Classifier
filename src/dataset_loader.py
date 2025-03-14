@@ -49,5 +49,5 @@ class LoadDataset:
         """ Loading Images Parallely using Pool.map() """
         with Pool(processes=self.workers) as pool:
             image_data = pool.map(self._transform_image, self.images)
-        return image_data
+        return [img for img in image_data if img is not None]
     
