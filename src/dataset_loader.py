@@ -22,7 +22,7 @@ class LoadDataset:
         self.images = list(self.folder_path.iterdir())
         self.length = len(self.images)
         if self.length == 0:
-            raise OSError("Directory Empty!")
+            raise FileNotFoundError("Directory Empty!")
         self.workers = os.cpu_count()
         print("Workers Assigned: %d" % self.workers)
         
@@ -32,8 +32,7 @@ class LoadDataset:
         if raw_image is None:
             return None
         raw_image = cv2.resize(raw_image, (64, 64))  
-        transformed_image = self._apply_hog(raw_image)
-        return transformed_image
+        return self._apply_hog(raw_image)
 
     def _apply_hog(self, raw_image):
         """ Applying HOG to Raw Image """
